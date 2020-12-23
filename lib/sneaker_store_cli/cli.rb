@@ -13,26 +13,38 @@ class CLI
     end
 
     def list_sneakers
-        #numbered list of all sneakers by name
+        ["sneaker1", "sneaker2", "sneaker3"].each.with_index(1) do |sneaker, i|
+            puts "#{i}. #{sneaker}"
+        end
     end
 
-    def sneaker_details(name)
-        #finds sneaker by name and returns all details of that particular sneaker
+    def sneaker_details
+        puts "Really cool sneaker"
+        # Sneaker.find_sneaker_details(name)
+    end
+
+    def goodbye
+        puts "Hope to see you again soon!"
     end
 
     def menu
         input = nil 
         while input != "exit"
-            puts "Take a look at what we have, then enter the number of the sneaker you want more info on."
-            puts "To look at more sneakers, type 'list sneakers'."
+            puts "To look at sneakers type 'list sneakers'."
+            puts "To take a closer look at a sneaker, enter the number of the sneaker you want more info on."
             puts "If you're done, type 'exit'."
-            list_sneakers
-            input = gets.strip.to_i - 1 
+            input = gets.strip 
        
-            if input > 0
-                sneaker_details(input.name)
+            if input.to_i > 0
+                puts "**********"
+                sneaker_details
+                puts "**********"
             elsif input == "list sneakers"
+                puts "~~~~~~~~~~~~"
                 list_sneakers
+                puts "~~~~~~~~~~~~"
+            elsif input == "exit"
+                goodbye 
             else
                 puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, or exit"
             end

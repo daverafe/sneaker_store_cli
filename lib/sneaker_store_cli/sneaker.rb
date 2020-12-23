@@ -24,6 +24,7 @@ class Sneaker
 
     def self.find_sneaker_details(name)
         #finds sneaker by name and returns all details of that particular sneaker
+        self.all.find {|sneaker| sneaker.name == name}
     end
 
 end

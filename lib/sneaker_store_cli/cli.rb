@@ -18,9 +18,9 @@ class CLI
         end
     end
 
-    def sneaker_details
+    def sneaker_details(input)
         puts "Really cool sneaker"
-        # Sneaker.find_sneaker_details(name)
+        # Sneaker.find_sneaker_details(input)
     end
 
     def goodbye
@@ -37,7 +37,7 @@ class CLI
        
             if input.to_i > 0
                 puts "**********"
-                sneaker_details
+                sneaker_details(input)
                 puts "**********"
             elsif input == "list sneakers"
                 puts "~~~~~~~~~~~~"

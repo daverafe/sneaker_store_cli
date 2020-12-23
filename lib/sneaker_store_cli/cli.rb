@@ -2,7 +2,7 @@ class CLI
     def call
        puts "Welcome to Dave's Sneaker Store!"
        puts "What's your name?"
-       Scraper.sneaker_data 
+       Scraper.create_sneakers
        input = gets.strip
        greeting(input)
     end
@@ -14,21 +14,28 @@ class CLI
     end
 
     def list_sneakers
-        ["sneaker1", "sneaker2", "sneaker3"].each.with_index(1) do |sneaker, i|
-            puts "#{i}. #{sneaker}"
+        Sneaker.all.each.with_index(1) do |sneaker, i|
+            puts "#{i}. #{sneaker.name}"
         end
     end
 
-    def sneaker_details(input)
-        puts "Really cool sneaker"
-        # Sneaker.find_sneaker_details(input)
+    def find_sneaker_details(input)
+       sneaker = Sneaker.find_sneaker_details(input)
+       binding.pry 
+       show_sneaker_details(sneaker)
+    end
+
+    def show_sneaker_details(sneaker)
+        puts "Name: #{sneaker.name}"
+        puts "Color: #{sneaker.color}"
+        puts "Description: #{sneaker.description}"
     end
 
     def goodbye
         puts "Hope to see you again soon!"
     end
 
-    def menu
+    def menu 
         input = nil 
         while input != "exit"
             puts "To look at sneakers type 'list sneakers'."
@@ -38,7 +45,7 @@ class CLI
        
             if input.to_i > 0
                 puts "**********"
-                sneaker_details(input)
+                find_sneaker_details(input)
                 puts "**********"
             elsif input == "list sneakers"
                 puts "~~~~~~~~~~~~"

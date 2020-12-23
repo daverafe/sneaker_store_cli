@@ -2,10 +2,10 @@ class Sneaker
     @@all = []
     attr_accessor :name, :color, :description
 
-    def initialize(name, color, description)
-        @name = name
-        @color = color
-        @description = description
+    def initialize(sneaker_hash)
+       sneaker_hash.each do |k, v|
+        self.send("#{k}=", v)
+       end
         save
     end
 
@@ -16,11 +16,6 @@ class Sneaker
     def self.all
         @@all
     end
-
-    #need to create new sneakers that assigned attributes with  scraped data 
-    # def self.create_with_data
-    #     sneaker = self.new()
-    # end
 
     def self.find_sneaker_details(name)
         #finds sneaker by name and returns all details of that particular sneaker

@@ -1,5 +1,6 @@
 class CLI 
     def call
+       @favorites_array = []
        puts "Welcome to Dave's Sneaker Store!"
        puts "What's your name?"
        Scraper.create_sneakers
@@ -28,20 +29,16 @@ class CLI
         puts "Name: #{sneaker.name}"
         puts "Color: #{sneaker.color}"
         puts "Description: #{sneaker.description}"
+        puts "Click to buy!: #{sneaker.url}"
     end
 
-    def favorites(name)
-        puts "Sneaker name:"
+    def favorites
+        puts "Enter sneaker name:"
         name = gets.strip
-        favorites_array = []
         favorite_sneaker = Sneaker.all.find{|sneaker| sneaker.name == name} 
-        favorites_array << favorite_sneaker.name
-        puts "Favorites: #{favorites_array}"
+        @favorites_array << favorite_sneaker.name
+        puts "Favorites: #{@favorites_array.join(", ")}"
     end
-
-    # def show_favorites
-
-    # end
 
     def goodbye
         puts "Hope to see you again soon!"
@@ -52,7 +49,7 @@ class CLI
         while input != "exit"
             puts "To look at sneakers type 'list sneakers'."
             puts "To take a closer look at a sneaker, enter the number of the sneaker you want more info on."
-            puts "To save a sneaker to your favorites, type save then a sneaker name."
+            puts "To save a sneaker to your favorites, type save then enter a sneaker name."
             puts "If you're done, type 'exit'."
             input = gets.strip 
        
@@ -65,7 +62,7 @@ class CLI
                 list_sneakers
                 puts "~~~~~~~~~~~~"
             elsif input == "save"
-                favorites(input)
+                favorites
             elsif input == "exit"
                 goodbye 
             else

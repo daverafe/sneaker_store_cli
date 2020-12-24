@@ -13,7 +13,7 @@ class Scraper
             :name => sneaker_1.css(".headline-2.css-zis9ta").text,
             :color => sneaker_1.css(".description-preview__color-description.ncss-li").text,
             :description => sneaker_1.css(".description-preview.body-2.css-1pbvugb p").text.gsub("â\u0080\u009907", "'07"),
-            # :url => 
+            :url => "https://www.nike.com/t/air-force-1-07-mens-shoe-5QFp5Z/CW2288-111"
         }
         sneakers << sneaker_1_hash
 
@@ -22,7 +22,7 @@ class Scraper
             :name => sneaker_2.css(".headline-2.css-zis9ta").text,
             :color => sneaker_2.css(".description-preview__color-description.ncss-li").text,
             :description => sneaker_2.css(".description-preview.body-2.css-1pbvugb p").text,
-            # :url => 
+            :url => "https://www.nike.com/t/air-max-1-mens-shoe-05Lwrg/CZ8140-001"
         }
         sneakers << sneaker_2_hash
 
@@ -31,7 +31,7 @@ class Scraper
             :name => sneaker_3.css(".headline-2.css-zis9ta").text,
             :color => sneaker_3.css(".description-preview__color-description.ncss-li").text,
             :description => sneaker_3.css(".description-preview.body-2.css-1pbvugb p").text,
-            # :url => 
+            :url => "https://www.nike.com/t/air-jordan-3-retro-se-shoe-gt1c9k/CV3583-003"
         }
         sneakers << sneaker_3_hash
 

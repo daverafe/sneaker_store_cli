@@ -21,7 +21,6 @@ class CLI
 
     def find_sneaker_details(input)
        sneaker = Sneaker.find_sneaker_details(input)
-       binding.pry 
        show_sneaker_details(sneaker)
     end
 
@@ -30,6 +29,19 @@ class CLI
         puts "Color: #{sneaker.color}"
         puts "Description: #{sneaker.description}"
     end
+
+    def favorites(name)
+        puts "Sneaker name:"
+        name = gets.strip
+        favorites_array = []
+        favorite_sneaker = Sneaker.all.find{|sneaker| sneaker.name == name} 
+        favorites_array << favorite_sneaker.name
+        puts "Favorites: #{favorites_array}"
+    end
+
+    # def show_favorites
+
+    # end
 
     def goodbye
         puts "Hope to see you again soon!"
@@ -40,17 +52,20 @@ class CLI
         while input != "exit"
             puts "To look at sneakers type 'list sneakers'."
             puts "To take a closer look at a sneaker, enter the number of the sneaker you want more info on."
+            puts "To save a sneaker to your favorites, type save then a sneaker name."
             puts "If you're done, type 'exit'."
             input = gets.strip 
        
             if input.to_i > 0
-                puts "**********"
+                puts "************"
                 find_sneaker_details(input)
-                puts "**********"
+                puts "************"
             elsif input == "list sneakers"
                 puts "~~~~~~~~~~~~"
                 list_sneakers
                 puts "~~~~~~~~~~~~"
+            elsif input == "save"
+                favorites(input)
             elsif input == "exit"
                 goodbye 
             else

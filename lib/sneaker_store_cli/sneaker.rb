@@ -1,6 +1,6 @@
 class Sneaker 
     @@all = []
-    attr_accessor :name, :color, :description
+    attr_accessor :name, :color, :description, :url 
 
     def initialize(sneaker_hash)
        sneaker_hash.each do |k, v|
@@ -21,6 +21,7 @@ class Sneaker
         #finds sneaker by name and returns all details of that particular sneaker
         self.all.find do |sneaker| 
             if self.all.index(sneaker) == index.to_i - 1
+                sneaker 
             end
         end
     end

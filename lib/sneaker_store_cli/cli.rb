@@ -29,7 +29,7 @@ class CLI
         puts "Name: #{sneaker.name}"
         puts "Color: #{sneaker.color}"
         puts "Description: #{sneaker.description}"
-        puts "Click to buy!: #{sneaker.url}"
+        puts "Link to buy!: #{sneaker.url}"
     end
 
     def favorites

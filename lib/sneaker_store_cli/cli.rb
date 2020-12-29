@@ -37,7 +37,9 @@ class CLI
         name = gets.strip
         favorite_sneaker = Sneaker.all.find{|sneaker| sneaker.name == name} 
         @favorites_array << favorite_sneaker.name
+        puts "............"
         puts "Favorites: #{@favorites_array.join(", ")}"
+        puts "............"
     end
 
     def goodbye
@@ -49,7 +51,7 @@ class CLI
         while input != "exit"
             puts "To look at sneakers type 'list sneakers'."
             puts "To take a closer look at a sneaker, enter the number of the sneaker you want more info on."
-            puts "To save a sneaker to your favorites, type save then enter a sneaker name."
+            puts "To save a sneaker to your favorites: type 'save', hit enter, then type a sneaker name when prompted."
             puts "If you're done, type 'exit'."
             input = gets.strip 
        

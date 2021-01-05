@@ -3,7 +3,7 @@ class CLI
        @favorites_array = []
        puts "Welcome to Dave's Sneaker Store!"
        puts "What's your name?"
-       Scraper.create_sneakers
+       Scraper.sneaker_page 
        input = gets.strip
        greeting(input)
     end

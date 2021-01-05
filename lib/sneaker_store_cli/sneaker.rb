@@ -18,7 +18,7 @@ class Sneaker
     end
 
     def self.find_sneaker_details(index)
-        #finds sneaker by name and returns all details of that particular sneaker
+        #finds sneaker by index and returns all details of that particular sneaker
         self.all.find do |sneaker| 
             if self.all.index(sneaker) == index.to_i - 1
                 sneaker 

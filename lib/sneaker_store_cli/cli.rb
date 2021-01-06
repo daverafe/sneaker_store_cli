@@ -1,6 +1,7 @@
 class CLI 
     def call
        @favorites_array = []
+       self.sneaker_art
        puts "Welcome to Dave's Sneaker Store!"
        puts "What's your name?"
        Scraper.sneaker_page 
@@ -16,7 +17,7 @@ class CLI
 
     def list_sneakers
         Sneaker.all.each.with_index(1) do |sneaker, i|
-            puts "#{i}. #{sneaker.name}"
+            puts "#{i}. #{sneaker.name}".red 
         end
     end
 
@@ -42,6 +43,18 @@ class CLI
         puts "............"
     end
 
+    def sneaker_art
+        art = <<-'ARTWORK'
+                           _                 
+                          | |                
+      ___ _ __   ___  __ _| | _____ _ __ ___ 
+     / __| '_ \ / _ \/ _` | |/ / _ \ '__/ __|
+     \__ \ | | |  __/ (_| |   <  __/ |  \__ \
+     |___/_| |_|\___|\__,_|_|\_\___|_|  |___/
+        ARTWORK
+        print art.blue 
+    end 
+
     def goodbye
         puts "Hope to see you again soon!"
     end
@@ -49,8 +62,8 @@ class CLI
     def menu 
         input = nil 
         while input != "exit"
-            puts "To look at sneakers type 'list sneakers'."
-            puts "To take a closer look at a sneaker, enter the number of the sneaker you want more info on."
+            puts "To look at the sneakers we currently have type 'list sneakers'."
+            puts "To take a closer look at a specific sneaker, enter the number of the sneaker you want more info on."
             puts "To save a sneaker to your favorites: type 'save', hit enter, then type a sneaker name when prompted."
             puts "If you're done, type 'exit'."
             input = gets.strip 

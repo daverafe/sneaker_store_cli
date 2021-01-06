@@ -7,7 +7,10 @@ class Scraper
     "https://www.nike.com/t/air-jordan-3-retro-se-shoe-gt1c9k/CV3583-003",
     "https://www.nike.com/t/air-huarache-mens-shoe-eoToq9X2/318429-003",
     "https://www.nike.com/t/air-jordan-13-retro-shoe-zp4pp0/414571-108",
-    "https://www.nike.com/t/cortez-basic-shoe-345sdw/819719-100"]
+    "https://www.nike.com/t/cortez-basic-shoe-345sdw/819719-100",
+    "https://www.nike.com/t/air-jordan-1-mid-shoe-MVp2kJ/554724-141",
+    "https://www.nike.com/t/sky-force-3-4-mens-shoe-JJ2Kf2/CZ7872-001",
+    "https://www.nike.com/t/roshe-one-mens-shoe-MkTmzjJv/511881-010"]
 
     def self.sneaker_page
         @@links.each do |link|
@@ -24,7 +27,7 @@ class Scraper
                 info_hash = {
                     name:  page.css(".headline-2.css-zis9ta").text,
                     color:  page.css(".description-preview__color-description.ncss-li").text.gsub("Shown:", ""),
-                    description: if "â\u0080\u0099" 
+                    description: if page.css(".description-preview.body-2.css-1pbvugb p").text.include?("â\u0080\u0099")
                                     page.css(".description-preview.body-2.css-1pbvugb p").text.gsub("â\u0080\u0099", "'")
                                 else
                                     page.css(".description-preview.body-2.css-1pbvugb p").text

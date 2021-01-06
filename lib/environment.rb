@@ -5,6 +5,7 @@ require_relative "./sneaker_store_cli/scraper.rb"
 
 require "open-uri"
 require "openssl"
+require "colorize"
 
 require "bundler"
 Bundler.require 

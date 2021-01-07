@@ -14,7 +14,7 @@ class Scraper
 
     def self.sneaker_page
         @@links.each do |link|
-            sneaker = Nokogiri::HTML(open(link, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'chrome'))
+            sneaker = Nokogiri::HTML(URI.open(link, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'chrome'))
             @@sneakers << sneaker
         end
         self.sneaker_scraper 

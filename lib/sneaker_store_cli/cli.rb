@@ -22,8 +22,13 @@ class CLI
     end
 
     def find_sneaker_details(input)
-       sneaker = Sneaker.find_sneaker_details(input)
-       show_sneaker_details(sneaker)
+        if input.to_i <= Sneaker.all.length
+            sneaker = Sneaker.find_sneaker_details(input)
+            show_sneaker_details(sneaker)
+        else
+            puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, or exit"
+            list_sneakers
+        end
     end
 
     def show_sneaker_details(sneaker)

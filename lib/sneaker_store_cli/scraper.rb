@@ -23,7 +23,6 @@ class Scraper
     def self.sneaker_scraper
         counter = 0
         @@sneakers.each do |page|
-            # binding.pry 
                 info_hash = {
                     name:  page.css(".headline-2.css-zis9ta").text,
                     color:  page.css(".description-preview__color-description.ncss-li").text.gsub("Shown:", ""),

@@ -22,11 +22,11 @@ class CLI
     end
 
     def find_sneaker_details(input)
-        if input.to_i <= Sneaker.all.length
+        if input.to_i.between?(0, Sneaker.all.length) 
             sneaker = Sneaker.find_sneaker_details(input)
             show_sneaker_details(sneaker)
         else
-            puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, or exit"
+            puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, save, or exit."
             list_sneakers
         end
     end
@@ -41,11 +41,16 @@ class CLI
     def favorites
         puts "Enter sneaker name:"
         name = gets.strip
-        favorite_sneaker = Sneaker.all.find{|sneaker| sneaker.name == name} 
-        @favorites_array << favorite_sneaker.name
-        puts "............"
-        puts "Favorites: #{@favorites_array.join(", ")}"
-        puts "............"
+        favorite_sneaker = Sneaker.all.find{|sneaker| sneaker.name == name}  
+        if favorite_sneaker  
+            @favorites_array << favorite_sneaker.name
+            puts "............"
+            puts "Favorites: #{@favorites_array.join(", ")}"
+            puts "............"
+        else
+            puts "That's not a sneaker we have, please enter another sneaker."
+            favorites   
+        end
     end
 
     def sneaker_art
@@ -86,7 +91,7 @@ class CLI
             elsif input == "exit"
                 goodbye 
             else
-                puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, or exit"
+                puts "Not sure what that means, please enter the number of the sneaker you want, list sneakers, save, or exit."
             end
         end
     end
